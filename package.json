@@ -1,0 +1,179 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "gbrain",
+  "title": "gbrain",
+  "description": "Query, search, think, and save web pages/PDFs into your gbrain knowledge brain via the local gbrain CLI.",
+  "icon": "icon.png",
+  "author": "Hyunmin",
+  "license": "MIT",
+  "categories": [
+    "Productivity"
+  ],
+  "commands": [
+    {
+      "name": "query",
+      "title": "Query Brain",
+      "subtitle": "gbrain",
+      "description": "Hybrid (semantic + keyword) search across brain pages.",
+      "mode": "view"
+    },
+    {
+      "name": "search",
+      "title": "Search Brain",
+      "subtitle": "gbrain",
+      "description": "Fast keyword search across brain pages.",
+      "mode": "view"
+    },
+    {
+      "name": "think",
+      "title": "Think",
+      "subtitle": "gbrain",
+      "description": "Multi-hop cited synthesis across pages, takes, and graph.",
+      "mode": "view",
+      "arguments": [
+        {
+          "name": "question",
+          "placeholder": "Question",
+          "type": "text",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "save-url",
+      "title": "Save URL to Brain",
+      "subtitle": "gbrain",
+      "description": "Fetch a web page or PDF, extract its text, and save it as a brain page. Fails loudly if fetch or parsing fails.",
+      "mode": "view"
+    },
+    {
+      "name": "capture",
+      "title": "Capture Note",
+      "subtitle": "gbrain",
+      "description": "Capture a quick note into the brain inbox.",
+      "mode": "view"
+    },
+    {
+      "name": "remember",
+      "title": "Remember Fact",
+      "subtitle": "gbrain",
+      "description": "Save a fact about an entity.",
+      "mode": "view"
+    },
+    {
+      "name": "recall",
+      "title": "Recall Facts",
+      "subtitle": "gbrain",
+      "description": "Find saved facts by question or entity.",
+      "mode": "view"
+    },
+    {
+      "name": "recent",
+      "title": "Recent Pages",
+      "subtitle": "gbrain",
+      "description": "Browse recently updated brain pages.",
+      "mode": "view"
+    },
+    {
+      "name": "status",
+      "title": "Brain Status",
+      "subtitle": "gbrain",
+      "description": "Show which brain the extension is connected to and diagnose setup.",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "language",
+      "title": "Language",
+      "description": "UI language",
+      "type": "dropdown",
+      "required": false,
+      "default": "en",
+      "data": [
+        {
+          "title": "English",
+          "value": "en"
+        },
+        {
+          "title": "한국어",
+          "value": "ko"
+        }
+      ]
+    },
+    {
+      "name": "gbrainHome",
+      "title": "GBRAIN_HOME",
+      "description": "gbrain config directory. Empty = read GBRAIN_HOME from your login shell (~/.zshrc).",
+      "type": "textfield",
+      "required": false,
+      "default": ""
+    },
+    {
+      "name": "gbrainPath",
+      "title": "gbrain binary",
+      "description": "Absolute path to the gbrain executable.",
+      "type": "textfield",
+      "required": false,
+      "default": "~/.bun/bin/gbrain"
+    },
+    {
+      "name": "extraPath",
+      "title": "Extra PATH",
+      "description": "Colon-separated directories prepended to PATH (gbrain needs bun).",
+      "type": "textfield",
+      "required": false,
+      "default": "~/.bun/bin:/opt/homebrew/bin:/usr/local/bin"
+    },
+    {
+      "name": "urlSlugPrefix",
+      "title": "Saved URL slug prefix",
+      "description": "Default slug folder for saved web pages.",
+      "type": "textfield",
+      "required": false,
+      "default": "web"
+    },
+    {
+      "name": "pdfSlugPrefix",
+      "title": "Saved PDF slug prefix",
+      "description": "Default slug folder for saved PDFs.",
+      "type": "textfield",
+      "required": false,
+      "default": "papers"
+    }
+  ],
+  "dependencies": {
+    "@mozilla/readability": "^0.6.0",
+    "@raycast/api": "^2.8.2",
+    "@raycast/utils": "^2.3.2",
+    "linkedom": "^0.18.13",
+    "turndown": "^7.2.4",
+    "unpdf": "^1.9.1"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/turndown": "^5.0.5",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.6.0",
+    "esbuild": "^0.28.2"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "lint": "ray lint",
+    "fix-lint": "ray lint --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "node scripts/test.mjs"
+  },
+  "keywords": [
+    "gbrain",
+    "knowledge",
+    "second brain",
+    "notes",
+    "search",
+    "pdf"
+  ]
+}
